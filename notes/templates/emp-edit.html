@@ -1,0 +1,84 @@
+{%extends 'base.html'%}
+{%load static%}
+{%block body_block%}
+
+
+<div class="row">
+    <div class="col-4"></div>
+    <div class="col-4">
+        {%if messages%}
+        {%for msg in messages%}
+        {%if msg.level == DEFAULT_MESSAGE_LEVELS.SUCCESS%}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>"{{msg}}"</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {%endif%}
+
+        {%if msg.level == DEFAULT_MESSAGE_LEVELS.ERROR%}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>"{{msg}}"</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {%endif%}
+        {%endfor%}
+        {%endif%}
+    </div>
+    <div class="col-4">
+
+    </div>
+</div>
+</div>
+<div class="row">
+    <div class="col-4"></div>
+    <div class="col-4"><h1>Edit Note</h1></div>
+    <div class="col-4"></div>
+</div>
+
+
+<form action="" method="post" enctype="multipart/form-data">
+    {%csrf_token%}
+
+    <div class="container w-60 border border-dark ">
+        <div class="row">
+
+            <div class="col-4">
+
+                <div class="card " style="width: 24rem;">
+                    <img src="{{emp.profile_pic.url}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Change Picture</h5>
+
+                        <div>
+                            <button class="btn btn-primary justify-content-center" style="margin-top:20px"
+                                    type="submit">{{ form.profile_pic }}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="col-4">
+
+                <img src="" alt="">
+
+                <div class="fieldWrapper mt-5">
+
+                    <label for="">Note:</label>
+                    {{ form.emp_name }}
+                </div>
+
+
+                <div>
+                    <button class="btn btn-secondary mt-5 d-flex justify-content-center" type="submit">Update Note
+                    </button>
+                </div>
+
+            </div>
+
+
+</form>
+
+
+{%endblock%}
