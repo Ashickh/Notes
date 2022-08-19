@@ -76,7 +76,7 @@ def employee_remove(request,*args,**kwargs):
 
 #
 def index(request):
-    return render(request,"emp-add.html")
+    return render(request,"index.html")
 
 # class SignupView(View):
 #     def get(self,request,*args,**kwargs):
